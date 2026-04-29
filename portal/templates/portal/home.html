@@ -1,0 +1,115 @@
+{% extends 'portal/base.html' %}
+
+{% block title %}Dashboard | Uma parceria SEMAS e UFRPE{% endblock %}
+
+{% block content %}
+<style>
+    /* Transforma o banner do topo em Azul Marinho */
+    .hero-section, .bg-primary { 
+        background-color: #0A1931 !important; 
+    }
+    /* Efeito de flutuar e crescer levemente nos botões */
+    .btn {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .btn:hover {
+        transform: translateY(-3px) scale(1.02);
+        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+</style>
+<style>
+    /* Efeito de elevação para os cards de estatísticas */
+    .card-estatistica {
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-estatistica:hover {
+        transform: translateY(-10px); /* Pula 10 pixels para cima */
+        box-shadow: 0 15px 30px rgba(0,0,0,0.2) !important; /* Aumenta a sombra */
+        z-index: 10; /* Garante que ele fique por cima de tudo */
+    }
+</style>
+<header class="hero-section text-center">
+    <div class="container">
+        <h1 class="display-4 fw-bold">Segurança Aquática em Pernambuco</h1>
+        <p class="lead text-uppercase" style="letter-spacing: 2px;">Portal central de informações e monitoramento de incidentes com tubarões.</p>
+    </div>
+</header>
+
+<div class="row mt-4 mb-5">
+    
+    <div class="col-md-4 mb-4">
+        <a href="/mapa" class="text-decoration-none">
+            <div class="card text-white text-center h-100 border-0 shadow-sm card-estatistica" style="background-color: #0d6efd;">
+                <div class="card-body d-flex flex-column justify-content-center py-4">
+                    <h2 class="display-5 fw-bold mb-0">36 km</h2>
+                    <p class="mb-0 mt-2">Área de Risco Monitorada</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <a href="/especies" class="text-decoration-none">
+            <div class="card text-dark text-center h-100 border-0 shadow-sm card-estatistica" style="background-color: #ffc107;">
+                <div class="card-body d-flex flex-column justify-content-center py-4">
+                    <h2 class="display-5 fw-bold mb-0">2</h2>
+                    <p class="mb-0 mt-2">Espécies de Alto Risco</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+    <div class="col-md-4 mb-4">
+        <a href="/dados" class="text-decoration-none">
+            <div class="card text-white text-center h-100 border-0 shadow-sm card-estatistica" style="background-color: #198754;">
+                <div class="card-body d-flex flex-column justify-content-center py-4">
+                    <h2 class="display-5 fw-bold mb-0">82</h2>
+                    <p class="mb-0 mt-2">Incidentes Oficiais (1992-2026)</p>
+                </div>
+            </div>
+        </a>
+    </div>
+
+</div>
+
+</div> ```
+
+
+   <div class="row">
+    <div class="col-md-8 mb-3 mb-md-0">
+        <div class="p-4 border rounded shadow-sm h-100" style="background-color: #0A1931;">
+            <h2 class="h4 fw-bold text-white">Sobre o Portal LEAqua</h2>
+            <hr class="border-light opacity-50">
+            <p class="text-white" style="font-size: 1.05rem; line-height: 1.6;">
+                O sistema centraliza o monitoramento georreferenciado e as informações biológicas dos incidentes no litoral pernambucano, consolidando dados baseados nos registros oficiais do CEMIT e do Corpo de Bombeiros. O objetivo é promover a educação ambiental, a prevenção de acidentes e apoiar a tomada de decisão do poder público.
+            </p>
+            <div class="d-grid gap-2 d-md-flex mt-4">
+                <a href="/especies" class="btn btn-outline-light btn-flutuante">Ver Incidentes por Espécies</a>
+                <a href="/mapa" class="btn btn-outline-light btn-flutuante">Acessar Mapa de Risco (RMR)</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="p-4 border rounded shadow-sm h-100" style="background-color: #0A1931;">
+            <h6 class="fw-bold mb-3 text-white">RESUMO DE DADOS (CEMIT)</h6>
+            <hr class="border-light opacity-50">
+           <ul class="text-white-50 mb-0" style="padding-left: 1.2rem; font-size: 0.95rem; list-style-type: none;">
+    <li class="mb-3">
+        <strong class="text-white">Taxa de Letalidade:</strong> <span class="text-white">33%</span><br>
+        <small>Proporção histórica de óbitos por incidentes.</small>
+    </li>
+    <li class="mb-3">
+        <strong class="text-white">Perfil das Vítimas:</strong> <span class="text-white">72%</span><br>
+        <small>Dos registros envolvem surfistas e banhistas.</small>
+    </li>
+    <li>
+        <strong class="text-white">Município Foco:</strong> <span class="text-white">Jaboatão</span><br>
+        <small>Detém o maior índice de letalidade por km de costa.</small>
+    </li>
+</ul>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

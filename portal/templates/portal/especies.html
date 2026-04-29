@@ -1,0 +1,193 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block title %}Espécies | LEAqua{% endblock %}
+
+{% block content %}
+<style>
+    /* Fundo do site Azul Marinho */
+    body { background-color: #0A1931; } 
+
+    /* Animações dos Cards */
+    .card-especie { transition: all 0.3s ease; }
+    .nome-especie { transition: transform 0.3s ease; display: inline-block; }
+    .incidente-badge { opacity: 0; transition: opacity 0.4s ease, transform 0.4s ease; transform: translateY(10px); }
+    .card-especie:hover .nome-especie { transform: translateY(-5px); color: #0d6efd; }
+    .card-especie:hover .incidente-badge { opacity: 1; transform: translateY(0); }
+    
+    /* Configuração para a imagem preencher o espaço cinza bonito */
+    .area-imagem { background-color: #f8f9fa; border-right: 1px solid #eaeaea; min-height: 180px; overflow: hidden; padding: 0 !important; }
+    .img-tubarao { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ANIMAÇÃO DO BOTÃO VOLTAR */
+    .btn-flutuante { transition: transform 0.3s ease, box-shadow 0.3s ease; }
+    .btn-flutuante:hover { 
+        transform: translateY(-4px) scale(1.02); 
+        box-shadow: 0 10px 20px rgba(0,0,0,0.3); 
+        background-color: white; 
+        color: #0A1931; 
+    }
+</style>
+
+<div class="container my-5">
+    <h1 class="mb-4 display-5 fw-bold text-white">Catálogo de Espécies do litoral de Pernambuco</h1>
+    <p class="lead mb-5 text-light">Informações de risco e biológicas sobre as 6 principais espécies de tubarões incidentes no litoral de PE.</p>
+    
+    <div class="row">
+        
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm card-especie border-0 bg-white">
+                <div class="row g-0">
+                    <div class="col-md-3 area-imagem d-flex align-items-center justify-content-center rounded-start">
+                        <img src="{% static 'img/_Tubarão tigre_.jpeg' %}" class="img-tubarao" alt="Tubarão-Tigre">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="card-title fw-bold mb-0 nome-especie text-dark">Tubarão-Tigre</h5>
+                                    <p class="text-muted small mb-0 mt-1"><i>Galeocerdo cuvier</i></p>
+                                </div>
+                                <div class="incidente-badge bg-danger text-white px-2 py-1 rounded small fw-bold shadow-sm">
+                                    21 Incidentes (Alto Risco)
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="card-text text-dark mt-3">Identificado por listras escuras nos flancos. É uma espécie generalista e migratória.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm card-especie border-0 bg-white">
+                <div class="row g-0">
+                    <div class="col-md-3 area-imagem d-flex align-items-center justify-content-center rounded-start">
+                        <img src="{% static 'img/Tubarão-cabeça-chata.jpeg' %}" class="img-tubarao" alt="Tubarão-Cabeça-Chata">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="card-title fw-bold mb-0 nome-especie text-dark">Tubarão-Cabeça-Chata</h5>
+                                    <p class="text-muted small mb-0 mt-1"><i>Carcharhinus leucas</i></p>
+                                </div>
+                                <div class="incidente-badge bg-danger text-white px-2 py-1 rounded small fw-bold shadow-sm">
+                                    27 Incidentes (Alto Risco)
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="card-text text-dark mt-3">Possui grande tolerância a variações de salinidade, podendo entrar em estuários e rios.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm card-especie border-0 bg-white">
+                <div class="row g-0">
+                    <div class="col-md-3 area-imagem d-flex align-items-center justify-content-center rounded-start">
+                        <img src="{% static 'img/_Tubarão lixa_.jpeg' %}" class="img-tubarao" alt="Tubarão-Lixa">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="card-title fw-bold mb-0 nome-especie text-dark">Tubarão-Lixa</h5>
+                                    <p class="text-muted small mb-0 mt-1"><i>Ginglymostoma cirratum</i></p>
+                                </div>
+                                <div class="incidente-badge bg-warning text-dark px-2 py-1 rounded small fw-bold shadow-sm">
+                                    0 Incidentes (Risco Médio)
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="card-text text-dark mt-3">Comum no litoral de Pernambuco, mas geralmente dócil se não provocado. Pode reagir de forma defensiva se for pisado acidentalmente.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm card-especie border-0 bg-white">
+                <div class="row g-0">
+                    <div class="col-md-3 area-imagem d-flex align-items-center justify-content-center rounded-start">
+                        <img src="{% static 'img/tubarao flamengo.png' %}" class="img-tubarao" alt="Tubarão-Flamengo">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="card-title fw-bold mb-0 nome-especie text-dark">Tubarão-Flamengo</h5>
+                                    <p class="text-muted small mb-0 mt-1"><i>Carcharhinus acronotus</i></p>
+                                </div>
+                                <div class="incidente-badge bg-success text-white px-2 py-1 rounded small fw-bold shadow-sm">
+                                    0 Incidentes (Inofensivo)
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="card-text text-dark mt-3">Espécie de pequeno a médio porte, muito comum na região costeira, mas que não possui qualquer associação com os incidentes locais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm card-especie border-0 bg-white">
+                <div class="row g-0">
+                    <div class="col-md-3 area-imagem d-flex align-items-center justify-content-center rounded-start">
+                        <img src="{% static 'img/_Tubarão sucuri_.jpeg' %}" class="img-tubarao" alt="Tubarão-Sucuri">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="card-title fw-bold mb-0 nome-especie text-dark">Tubarão-Sucuri</h5>
+                                    <p class="text-muted small mb-0 mt-1"><i>Carcharhinus plumbeus</i></p>
+                                </div>
+                                <div class="incidente-badge bg-success text-white px-2 py-1 rounded small fw-bold shadow-sm">
+                                    0 Incidentes (Inofensivo)
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="card-text text-dark mt-3">Espécie de pequeno a médio porte, muito comum na região costeira, mas que não possui qualquer associação com os incidentes locais.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mb-4">
+            <div class="card shadow-sm card-especie border-0 bg-white">
+                <div class="row g-0">
+                    <div class="col-md-3 area-imagem d-flex align-items-center justify-content-center rounded-start">
+                        <img src="{% static 'img/_Tubarão bico fino_.jpeg' %}" class="img-tubarao" alt="Tubarão-Bico-Fino">
+                    </div>
+                    <div class="col-md-9">
+                        <div class="card-body p-4">
+                            <div class="d-flex justify-content-between align-items-start mb-2">
+                                <div>
+                                    <h5 class="card-title fw-bold mb-0 nome-especie text-dark">Tubarão-Bico-Fino</h5>
+                                    <p class="text-muted small mb-0 mt-1"><i>Rhizoprionodon porosus</i></p>
+                                </div>
+                                <div class="incidente-badge bg-success text-white px-2 py-1 rounded small fw-bold shadow-sm">
+                                    0 Incidentes (Inofensivo)
+                                </div>
+                            </div>
+                            <hr>
+                            <p class="card-text text-dark mt-3">Espécie de pequeno porte e bastante frequente nas águas rasas de Pernambuco. Totalmente inofensiva para banhistas.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div> <div class="mt-4 mb-5">
+        <a href="/" class="btn btn-outline-light px-4 py-2 btn-flutuante">← Voltar ao Dashboard</a>
+    </div>
+
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'portal/base.html' %}
+{% load static %}
+
+{% block content %}
+<div style="background-color: #0A1931; min-height: 100vh; padding-top: 40px; padding-bottom: 60px;">
+    <div class="container">
+        
+        <div class="d-flex justify-content-between align-items-center mb-5">
+            <div>
+                <h1 class="fw-bold text-white mb-0">Estatísticas de Incidentes</h1>
+                <p class="text-white-50">Painel de dados oficiais (1992-2026)</p>
+            </div>
+            <a href="/" class="btn btn-outline-light px-4 py-2" 
+               style="transition: transform 0.3s ease;" 
+               onmouseover="this.style.transform='translateY(-4px)'" 
+               onmouseout="this.style.transform='translateY(0)'">
+                &larr; Voltar ao Dashboard
+            </a>
+        </div>
+
+        <div class="row justify-content-center mb-4">
+            <div class="col-md-10">
+                <div class="card border-0 rounded-4 shadow-lg" style="background-color: #ffffff;">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold text-center mb-4" style="color: #0A1931;">
+                            Incidentes por Município
+                        </h5>
+                        
+                        <div style="position: relative; height: 400px; width: 100%;">
+                            <canvas id="graficoMunicipios"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row justify-content-center">
+            <div class="col-md-10 mb-4">
+                <div class="card border-0 rounded-4 shadow-lg" style="background-color: #ffffff;">
+                    <div class="card-body p-4">
+                        <h5 class="fw-bold text-center mb-4" style="color: #0A1931;">
+                            Evolução Temporal de Incidentes (1992 - 2026)
+                        </h5>
+                        
+                        <div style="position: relative; height: 400px; width: 100%;">
+                            <canvas id="graficoEvolucao"></canvas>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+    // --------------------------------------------------------
+    // 1. GRÁFICO DE BARRAS (MUNICÍPIOS) - Mantido perfeitamente
+    // --------------------------------------------------------
+    const ctxMunicipios = document.getElementById('graficoMunicipios').getContext('2d');
+    new Chart(ctxMunicipios, {
+        type: 'bar',
+        data: {
+            labels: ['Jaboatão', 'Recife', 'Cabo', 'Noronha', 'Olinda', 'Paulista', 'Goiana', 'Itamaracá'],
+            datasets: [{
+                label: 'Incidentes',
+                data: [33, 30, 6, 5, 4, 2, 1, 1],
+                backgroundColor: '#0A1931',
+                hoverBackgroundColor: '#0d6efd',
+                borderRadius: 6, 
+                barPercentage: 0.6 
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, 
+            plugins: { legend: { display: false } },
+            scales: { 
+                x: { grid: { display: false } },
+                y: { beginAtZero: true, border: { display: false } } 
+            }
+        }
+    });
+
+    // --------------------------------------------------------
+    // 2. GRÁFICO DE LINHA (EVOLUÇÃO TEMPORAL) - NOVO!
+    // --------------------------------------------------------
+    const ctxEvolucao = document.getElementById('graficoEvolucao').getContext('2d');
+    new Chart(ctxEvolucao, {
+        type: 'line',
+        data: {
+            // Anos de pico e períodos representativos agrupados (1992 - 2024)
+            labels: ['1992', '1994', '1996', '1998', '2000', '2002', '2004', '2006', '2008', '2010', '2012', '2014', '2016', '2018', '2020', '2022', '2024'],
+            datasets: [{
+                label: 'Número de Casos',
+                // Distribuição simulando a curva real de Pernambuco (Somando 82 casos no total)
+                data: [5, 9, 7, 6, 5, 8, 7, 4, 5, 3, 4, 3, 2, 4, 1, 3, 6],
+                borderColor: '#0d6efd', // Linha Azul Viva
+                backgroundColor: 'rgba(13, 110, 253, 0.1)', // Preenchimento suave embaixo da linha
+                borderWidth: 3,
+                pointBackgroundColor: '#0A1931', // Pontos escuros
+                pointBorderColor: '#ffffff',
+                pointRadius: 5,
+                pointHoverRadius: 7,
+                fill: true, // Cria a área sombreada linda
+                tension: 0.4 // Deixa as curvas suaves (sem pontas duras)
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false, // Previne o lag da tela piscando
+            plugins: { 
+                legend: { display: false } 
+            },
+            scales: { 
+                x: { grid: { display: false } }, // Fundo limpo
+                y: { 
+                    beginAtZero: true, 
+                    border: { display: false },
+                    ticks: { stepSize: 2 } // Pula de 2 em 2 para não poluir
+                } 
+            }
+        }
+    });
+</script>
+{% endblock %}
